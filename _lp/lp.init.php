@@ -10,7 +10,7 @@ define( 'FROOT' , dirname( __FILE__ ) . DS );
 // 设置时区
 @date_default_timezone_set('Asia/Chongqing');
 
-
+print_r($_POST);
 // 载入composer autoload
 require AROOT . 'vendor' . DS . 'autoload.php';
 

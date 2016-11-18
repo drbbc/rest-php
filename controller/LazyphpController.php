@@ -1,11 +1,11 @@
 <?php
 namespace Lazyphp\Controller;
-
+use \Sokil\Mongo\Client;
 class LazyphpController
 {
 	public function __construct()
     {
-        
+			$this->client = new Client("mongodb://127.0.0.1");
     }
 
 
@@ -18,6 +18,7 @@ class LazyphpController
     public function index()
     {
         $data['title'] = $data['top_title'] = 'Version 4.5';
+				$data['db'] = $this->client->getDatabase("rest")->getCollection("users")->find()->findAll();
         return send_result( $data );
     }
 
@@ -32,7 +33,7 @@ class LazyphpController
         //$data['notice'] = ;
         return send_error('SYSTEM','这里是信息提示页面');
     }
-    
+
     /**
      * Demo接口
      * @ApiDescription(section="Demo", description="乘法接口")
